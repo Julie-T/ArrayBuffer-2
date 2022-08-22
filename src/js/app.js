@@ -1,7 +1,6 @@
 export default class ArrayBufferConverter {
   constructor() {
-    this.newBuffer = new Uint16Array();
-    this.newString = [];
+    this.newBuffer = [];
   }
 
   load() {
@@ -16,21 +15,21 @@ export default class ArrayBufferConverter {
         return buffer;
       })(data);
     }
-    this.newBuffer = getBuffer();
+    this.newBuffer = new Uint16Array(getBuffer());
     return this.newBuffer;
   }
 
   toString() {
-    for (let i = 0; i < this.newBuffer.length - 1; i += 1) {
-      this.newBuffer.forEach((elem) => {
-        String.fromCharCode(elem);
-      });
+    const arr = [];
+    for (const elem of this.newBuffer) {
+      const newelem = String.fromCharCode(elem);
+      arr.push(newelem);
     }
-    return this.newBuffer;
+    return arr.toString().split(',').join('');
   }
 }
 
 const arrayBufferConverter = new ArrayBufferConverter();
-console.log(arrayBufferConverter.load());
+arrayBufferConverter.load();
 
 console.log(arrayBufferConverter.toString());
