@@ -32,4 +32,4 @@ export default class ArrayBufferConverter {
 const arrayBufferConverter = new ArrayBufferConverter();
 arrayBufferConverter.load();
 
-console.log(arrayBufferConverter.toString());
+// console.log(arrayBufferConverter.toString());
